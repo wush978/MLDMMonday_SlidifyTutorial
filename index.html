@@ -93,13 +93,16 @@
   <article data-timings="">
     <p>透過<code>devtools</code>從github安裝<code>Slidify</code></p>
 
-<pre><code class="r">install.packages(&quot;devtools&quot;)
-require(devtools)
-install_github(&quot;knitr&quot;, &quot;yihui&quot;)
-install_github(&quot;whisker&quot;, &quot;edwindj&quot;)
-install_github(&quot;markdown&quot;, &quot;rstudio&quot;)
+<pre><code class="r">library(devtools)
 install_github(&quot;slidify&quot;, &quot;ramnathv&quot;)
 </code></pre>
+
+<h3><code>devtools</code>的安裝</h3>
+
+<ul>
+<li>如果是Windows作業系統，請先安裝<a href="http://cran.r-project.org/bin/windows/Rtools/"><code>Rtools</code></a></li>
+<li>可參考社群教學影片：<a href="http://www.youtube.com/watch?v=enPPMHr5SrM&amp;list=PLM7HGQkDNOHtqUTowalvnOwZCx4mWDmte&amp;feature=share&amp;index=4">安裝Rtools(Windows) </a></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -110,7 +113,16 @@ install_github(&quot;slidify&quot;, &quot;ramnathv&quot;)
     <h2>開始人生第一個Slidify投影片</h2>
   </hgroup>
   <article data-timings="">
-    <p>TODO: 影片 or Demo</p>
+    <pre><code class="r">library(slidify)
+author(&quot;資料夾名稱&quot;)
+</code></pre>
+
+<ul>
+<li>會建立一個資料夾以及預設的<code>index.Rmd</code></li>
+<li>會建立一個git repository</li>
+</ul>
+
+<p>TODO: 影片 or Demo</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -118,10 +130,176 @@ install_github(&quot;slidify&quot;, &quot;ramnathv&quot;)
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
+    <h2>第一眼：</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>---
+title    : Title 
+substitle: Subtitle
+author   : Author
+job      : Job
+widgets  : []
+mode     : selfcontained
+---
+
+## Slide 1
+
+Use an empty line followed by three dashes to separate slides!
+
+--- .class #id 
+
+## Slide 2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="cover" style="background:url(assets/img/Cover.png);">
+  <hgroup>
     <h2>封面</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="assets/img/Cover.png" class="fit100" /></p>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>投影片</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>---
+
+## Slide 1
+
+Use an empty line followed by three dashes to separate slides!
+
+--- .class #id 
+
+## Slide 2
+</code></pre>
+
+<ul>
+<li><code>---</code>表示分頁</li>
+<li><code>##</code>表示投影片標題</li>
+<li>採用Markdown語法，細節請參考<a href="http://markdown.tw/">Markdown語法說明</a>，可在<a href="http://dillinger.io">Dillinger</a>試玩。</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>與R 的整合</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>---
+
+\```{r}
+a &lt;- 1
+a + 1
+f(a)
+\```
+
+---
+</code></pre>
+
+<pre><code>## [1] 2
+</code></pre>
+
+<pre><code>## Error: 沒有這個函數 &quot;f&quot;
+</code></pre>
+
+<ul>
+<li>採用類似<a href="http://yihui.name/knitr/">knitr</a>的方法
+
+<ul>
+<li>可參考<a href="http://www.youtube.com/watch?v=OHKZLeKlUsM&amp;feature=share">20121203 MLDM Monday [markdown + knitr]</a></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>投影片的客製化</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/customization.png" /></p>
+
+<div style='float:left;width:48%;'>
+  <h3>Layout</h3>
+
+<ul>
+<li>利用如<code>--- &amp;twocol</code>來指定要用的layout</li>
+<li>可以把layout放置於<code>assets/layout</code>底下，如：<code>assets/layouts/twocol.html</code></li>
+<li>產生投影片的套件是<a href="http://cran.r-project.org/web/packages/whisker/index.html">whisker</a></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/img/twocol.png" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>自行定義twocolwithfoot</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p><img src="assets/img/twocolwithfoot.png" /></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/img/source.png" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Header</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <h2>Left</h2>
+
+</div>
+<div style='float:right;width:48%;' class='centered'>
+  <h2>Right</h2>
+
+</div>
+<h2>Foot</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <h2>Notes</h2>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>發佈</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>請見Demo</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -157,8 +335,50 @@ install_github(&quot;slidify&quot;, &quot;ramnathv&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='封面'>
+        data-slide=5 title='第一眼：'>
          5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='封面'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='投影片'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='與R 的整合'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='投影片的客製化'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='自行定義twocolwithfoot'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Header'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='發佈'>
+         12
       </a>
     </li>
   </ul>
