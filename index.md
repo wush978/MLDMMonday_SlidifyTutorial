@@ -6,8 +6,9 @@ job         : Taiwan R User Group
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : []            # {mathjax, quiz, bootstrap}
+widgets     : [quiz, bootstrap, shiny, interactive]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
+ext_widgets: {rCharts: [libraries/nvd3]}
 github:
   user: wush978
   repo: MLDMMonday_SlidifyTutorial
@@ -172,26 +173,233 @@ TODO: 影片 or Demo
 
 --- &twocolwithfoot
 
-## Header
+## 這是標題
+
+```
+這段文字在上方
+```
 
 *** =left
 
-## Left
+```
+這段文字在左側
+```
 
 *** =right
 
-## Right
+```
+這段文字在右側
+```
 
 *** =foot
 
-## Foot
+<hr/>
+
+```
+這段文字在下方
+```
 
 *** =pnotes
 
-## Notes
+這段文字在註解
 
 ---
 
 ## 發佈
 
-請見Demo
+
+```r
+publish_dropbox
+publish_gist
+publish_github
+publish_rpubs
+```
+
+
+--- &twocol
+
+## 模板候選
+
+*** =left
+
+### CSS
+
+```
+slide:not(.segue) h2,
+slide:not(.segue) h3,
+slides slide.large article p,
+article p, article li, article li.build {
+    font-family: 'Source Sans Pro', 
+    'Helvetica', 'Crimson Text', 'Garamond', 
+    'Palatino', sans-serif;
+}
+
+slides slide.large article p {
+    font-size: 52px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.2em;
+}
+```
+
+*** =right
+
+    --- &vcenter .large
+    
+    測試文字
+    
+    --- &vcenter .large
+
+--- &vcenter .large
+
+測試文字
+
+--- &twocol
+
+## 互動式測驗
+
+*** =left
+
+在YAML中的widget上新增`quiz`和`bootstrap`
+
+```
+widgets     : [quiz, bootstrap]
+```
+
+*** =right
+
+    --- &radio
+    
+    ## Question 1
+    
+    What is 1 + 1?
+    
+    1. 1
+    2. _2_
+    3. 3
+    4. 4
+    
+    *** .hint
+    This is a hint
+    
+    *** .explanation
+    This is an explanation
+
+--- &radio
+
+## Question 1
+
+What is 1 + 1?
+
+1. 1
+2. _2_
+3. 3
+4. 4
+
+*** .hint
+This is a hint
+
+*** .explanation
+This is an explanation
+
+--- &twocol
+
+## 互動式圖片
+
+*** =left
+
+在YAML中如下設定：
+
+```
+ext_widgets: {rCharts: [libraries/nvd3]}
+```
+
+*** =right
+
+    ## Example 1 Facetted Scatterplot
+    names(iris) = gsub("\\.", "", names(iris))
+    rPlot(SepalLength ~ SepalWidth | Species, data = iris, color = 'Species', type = 'point')
+
+---
+
+## Example 1 Facetted Scatterplot
+
+
+```r
+library(rCharts)
+names(iris) = gsub("\\.", "", names(iris))
+rPlot(SepalLength ~ SepalWidth | Species, data = iris, color = "Species", type = "point")
+```
+
+<iframe src='
+assets/fig/unnamed-chunk-5.html
+' scrolling='no' seamless class='rChart 
+polycharts
+ '
+id=iframe-
+chart52664a81efa
+></iframe>
+<style>iframe.rChart{ width: 100%; height: 400px;}</style>
+
+
+---
+
+## Example 2 Facetted Barplot
+
+
+```r
+hair_eye = as.data.frame(HairEyeColor)
+rPlot(Freq ~ Hair | Eye, color = "Eye", data = hair_eye, type = "bar")
+```
+
+<iframe src='
+assets/fig/unnamed-chunk-6.html
+' scrolling='no' seamless class='rChart 
+polycharts
+ '
+id=iframe-
+chart5267816c16e
+></iframe>
+<style>iframe.rChart{ width: 100%; height: 400px;}</style>
+
+
+--- &twocol
+
+## 內嵌R Console
+
+*** =left
+
+YAML:
+
+```
+widgets    : [bootstrap, quiz, shiny, interactive]
+```
+
+不再使用`slidify`，改用`runDeck`啟動投影片
+
+*** =right
+
+    --- &interactive
+    
+    ## Interactive Console
+    
+    \```{r opts.label = 'interactive', results = 'asis'}
+    require(googleVis)
+    M1 <- gvisMotionChart(Fruits, 
+    idvar = 'Fruit', timevar = 'Year')
+    print(M1, tag = 'chart')
+    ```
+
+--- &interactive
+
+## Interactive Console
+
+<textarea class='interactive' id='interactive{{slide.num}}' data-cell='{{slide.num}}' data-results='asis' style='display:none'>require(googleVis)
+M1 <- gvisMotionChart(Fruits, 
+idvar = 'Fruit', timevar = 'Year')
+print(M1, tag = 'chart')</textarea>
+
+
+--- &interactive
+
+

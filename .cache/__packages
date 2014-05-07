@@ -1,5 +1,11 @@
 base
+devtools
+googleVis
 knitr
+rCharts
 reshape2
+shiny
 slidify
+slidifyLibraries
+XML
 xtable
