@@ -397,4 +397,4 @@ slidifyUI(
     tags$div(id = 'nvd3plot', class='shiny-html-output nvd3 rChart')
   )
 )
-`` `
+```

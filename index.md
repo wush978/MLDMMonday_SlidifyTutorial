@@ -402,4 +402,25 @@ print(M1, tag = 'chart')</textarea>
 
 --- &interactive
 
+<div class="row-fluid">
+  <div class="span4">
+    <form class="well">
+      <label class="control-label" for="sex">Choose Sex</label>
+      <select id="sex">
+        <option value="Male" selected="selected">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <script type="application/json" data-for="sex" data-nonempty="">{}</script>
+      <label class="control-label" for="type">Choose Type</label>
+      <select id="type">
+        <option value="multiBarChart" selected="selected">multiBarChart</option>
+        <option value="multiBarHorizontalChart">multiBarHorizontalChart</option>
+      </select>
+      <script type="application/json" data-for="type" data-nonempty="">{}</script>
+    </form>
+  </div>
+  <div class="span8">
+    <div id="nvd3plot" class="shiny-html-output nvd3 rChart"></div>
+  </div>
+</div>
 
